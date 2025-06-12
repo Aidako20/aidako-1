@@ -19,6 +19,6 @@
 <span lang="shell" class="line" id="LC16"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s2">"s,^</span><span class="se">\(</span><span class="s2">logrotate = </span><span class="se">\)</span><span class="s2">.*,</span><span class="se">\1</span><span class="s2">"</span>True<span class="s2">","</span> /etc/aidako/aidako.conf</span>
 <span lang="shell" class="line" id="LC17"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s2">"s,^</span><span class="se">\(</span><span class="s2">proxy_mode = </span><span class="se">\)</span><span class="s2">.*,</span><span class="se">\1</span><span class="s2">"</span>True<span class="s2">","</span> /etc/aidako/aidako.conf</span>
 <span lang="shell" class="line" id="LC18"><span class="nb">sudo cp</span> /opt/aidako/aidako/debian/init /etc/init.d/aidako <span class="o">&amp;&amp;</span> <span class="nb">chmod</span> +x /etc/init.d/aidako</span>
-<span lang="shell" class="line" id="LC19"><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/aidako/aidako/aidako-bin /usr/bin/aidako</span>
+<span lang="shell" class="line" id="LC19"><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/aidako/aidako/odoo-bin /usr/bin/aidako</span>
 <span lang="shell" class="line" id="LC20"><span class="nb">sudo </span>update-rc.d <span class="nt">-f</span> aidako start 20 2 3 4 5 <span class="nb">.</span></span>
 <span lang="shell" class="line" id="LC21"><span class="nb">sudo </span>service aidako restart</span></code></pre></div>
