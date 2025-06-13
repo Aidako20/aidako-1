@@ -1,37 +1,26 @@
-# Odoo
 
-[![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
-[![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/master)
-[![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
-[![Nightly Builds](https://img.shields.io/badge/master-nightly-875A7B.svg?style=flat&colorA=8F8F8F)](https://nightly.odoo.com/)
 
-Odoo is a suite of web based open source business apps.
 
-The main Odoo Apps include an [Open Source CRM](https://www.odoo.com/page/crm),
-[Website Builder](https://www.odoo.com/app/website),
-[eCommerce](https://www.odoo.com/app/ecommerce),
-[Warehouse Management](https://www.odoo.com/app/inventory),
-[Project Management](https://www.odoo.com/app/project),
-[Billing &amp; Accounting](https://www.odoo.com/app/accounting),
-[Point of Sale](https://www.odoo.com/app/point-of-sale-shop),
-[Human Resources](https://www.odoo.com/app/employees),
-[Marketing](https://www.odoo.com/app/social-marketing),
-[Manufacturing](https://www.odoo.com/app/manufacturing),
-[...](https://www.odoo.com/)
 
-Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get
-a full-featured [Open Source ERP](https://www.odoo.com) when you install several Apps.
-
-## Getting started with Odoo
-
-For a standard installation please follow the [Setup instructions](https://www.odoo.com/documentation/master/administration/install/install.html)
-from the documentation.
-
-To learn the software, we recommend the [Odoo eLearning](https://www.odoo.com/slides),
-or [Scale-up, the business game](https://www.odoo.com/page/scale-up-business-game).
-Developers can start with [the developer tutorials](https://www.odoo.com/documentation/master/developer/howtos.html).
-
-## Security
-
-If you believe you have found a security issue, check our [Responsible Disclosure page](https://www.odoo.com/security-report)
-for details and get in touch with us via email.
+<div class="blob-content gl-flex gl-w-full gl-flex-col gl-overflow-y-auto"><pre class="code highlight !gl-p-0"><code data-blob-hash="8734431499495818"><span lang="shell" class="line" id="LC1"><span class="c">#!/bin/bash</span></span>
+<span lang="shell" class="line" id="LC2"><span class="nb">sudo </span>adduser <span class="nt">--system</span> <span class="nt">--quiet</span> <span class="nt">--shell</span><span class="o">=</span>/bin/bash <span class="nt">--home</span><span class="o">=</span>/opt/aidako <span class="nt">--gecos</span> <span class="s1">'aidako'</span> <span class="nt">--group</span> aidako</span>
+<span lang="shell" class="line" id="LC3"><span class="nb">sudo mkdir</span> /etc/aidako <span class="o">&amp;&amp;</span> <span class="nb">mkdir</span> /var/log/aidako/</span>
+<span lang="shell" class="line" id="LC4"><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install </span>postgresql postgresql-server-dev-14 build-essential python3-pillow python3-lxml python3-dev python3-pip python3-setuptools npm nodejs git gdebi libldap2-dev libpq-dev libsasl2-dev libxml2-dev libxslt1-dev libjpeg-dev <span class="nt">-y</span></span>
+<span lang="shell" class="line" id="LC5"><span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> pip</span>
+<span lang="shell" class="line" id="LC6"><span class="nb">sudo </span>service postgresql restart</span>
+<span lang="shell" class="line" id="LC7">git clone <span class="nt"></span><span class="o"></span><span class="nt"></span><span class="o"> https://github.com/Aidako20/aidako-1.git /opt/aidako/aidako</span>
+<span lang="shell" class="line" id="LC8"><span class="nb">sudo chown </span>aidako:aidako /opt/aidako/ <span class="nt">-R</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo chown </span>aidako:aidako /var/log/aidako/ <span class="nt">-R</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /opt/aidako/aidako <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt</span>
+ </span> sudo ./setup/debinstall.sh</span>
+<span lang="shell" class="line" id="LC9"><span class="nb">sudo </span>npm <span class="nb">install</span> <span class="nt">-g</span> less less-plugin-clean-css rtlcss <span class="nt">-y</span></span>
+<span lang="shell" class="line" id="LC10"><span class="nb">cd</span> /tmp <span class="o">&amp;&amp;</span> wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>gdebi <span class="nt">-n</span> wkhtmltox_0.12.6.1-3.jammy_amd64.deb <span class="o">&amp;&amp;</span> <span class="nb">rm </span>wkhtmltox_0.12.6.1-3.jammy_amd64.deb</span>
+<span lang="shell" class="line" id="LC11"><span class="nb">sudo ln</span> <span class="nt">-s</span> /usr/local/bin/wkhtmltopdf /usr/bin/ <span class="o">&amp;&amp;</span> <span class="nb">sudo ln</span> <span class="nt">-s</span> /usr/local/bin/wkhtmltoimage /usr/bin/</span>
+<span lang="shell" class="line" id="LC12"><span class="nb">sudo </span>su - postgres <span class="nt">-c</span> <span class="s2">"createuser -s aidako"</span></span>
+<span lang="shell" class="line" id="LC13"><span class="nb">sudo </span>su - aidako <span class="nt">-c</span> <span class="s2">"/opt/aidako/aidako/odoo-bin --addons-path=/opt/aidako/aidako/addons -s --stop-after-init"</span></span>
+<span lang="shell" class="line" id="LC14"><span class="nb">sudo mv</span> /opt/aidako/.odoorc /etc/aidako/aidako.conf</span>
+<span lang="shell" class="line" id="LC15"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s2">"s,^</span><span class="se">\(</span><span class="s2">logfile = </span><span class="se">\)</span><span class="s2">.*,</span><span class="se">\1</span><span class="s2">"</span>/var/log/aidako/aidako-server.log<span class="s2">","</span> /etc/aidako/aidako.conf</span>
+<span lang="shell" class="line" id="LC16"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s2">"s,^</span><span class="se">\(</span><span class="s2">logrotate = </span><span class="se">\)</span><span class="s2">.*,</span><span class="se">\1</span><span class="s2">"</span>True<span class="s2">","</span> /etc/aidako/aidako.conf</span>
+<span lang="shell" class="line" id="LC17"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s2">"s,^</span><span class="se">\(</span><span class="s2">proxy_mode = </span><span class="se">\)</span><span class="s2">.*,</span><span class="se">\1</span><span class="s2">"</span>True<span class="s2">","</span> /etc/aidako/aidako.conf</span>
+<span lang="shell" class="line" id="LC18"><span class="nb">sudo cp</span> /opt/aidako/aidako/debian/init /etc/init.d/aidako <span class="o">&amp;&amp;</span> <span class="nb">chmod</span> +x /etc/init.d/aidako</span>
+<span lang="shell" class="line" id="LC19"><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/aidako/aidako/odoo-bin /usr/bin/aidako</span>
+<span lang="shell" class="line" id="LC20"><span class="nb">sudo </span>update-rc.d <span class="nt">-f</span> aidako start 20 2 3 4 5 <span class="nb">.</span></span>
+<span lang="shell" class="line" id="LC21"><span class="nb">sudo </span>service aidako restart</span></code></pre></div>
