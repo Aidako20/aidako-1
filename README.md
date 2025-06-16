@@ -23,9 +23,9 @@
 <span lang="shell" class="line" id="LC20"><span class="nb">sudo </span>update-rc.d <span class="nt">-f</span> odoo start 20 2 3 4 5 <span class="nb">.</span></span>
 <span lang="shell" class="line" id="LC21"><span class="nb">sudo </span>service odoo restart</span></code></pre></div>
 <div>
-<span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre>
-<span lang="shell" class="line" id="LC21">sudo systemctl enable nginx</span></code></pre>
-<span lang="shell" class="line" id="LC21">sudo nano /etc/nginx/sites-available/yourdomain.conf</span></code></pre>
+<span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre></div>
+<div><span lang="shell" class="line" id="LC21">sudo systemctl enable nginx</span></code></pre></div>
+<div><span lang="shell" class="line" id="LC21">sudo nano /etc/nginx/sites-available/yourdomain.conf</span></code></pre></div>
 <span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre>
 </div>
 
