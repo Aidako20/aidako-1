@@ -106,37 +106,8 @@
 <span lang="shell" class="line" id="LC21">sudo nano /etc/nginx/sites-available/yourdomain </span></code></pre></div>
 <div class="blob-content gl-flex gl-w-full gl-flex-col gl-overflow-y-auto"><pre class="code highlight !gl-p-0"><code data-blob-hash="8734431499495818"><span lang="shell" class="line" id="LC1"><span class="c">add_header 'Content-Security-Policy' 'upgrade-insecure-requests';</span></code></pre></div>
 
-
-
-
-
-
-
-
-
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
-
-
-
-
- 
-</span>"shell" class="line" id="LC2"><span class="nb"></span>
-
- 
-<span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre>
-</div>
-
+<span lang="shell" class="line" id="LC21">sudo systemctl restart nginx </span></code></pre></div>
+<span lang="shell" class="line" id="LC21">sudo systemctl restart odoo </span></code></pre></div>
 
 
 
