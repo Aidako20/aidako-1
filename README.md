@@ -25,6 +25,7 @@
 <div>
 <span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre></div>
 <span lang="shell" class="line" id="LC21">sudo systemctl enable nginx</span></code></pre>
+sudo nano /etc/nginx/sites-available/yourdomain.conf
 
 </div>
 
