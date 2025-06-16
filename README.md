@@ -28,8 +28,95 @@
 <div><span lang="shell" class="line" id="LC21">sudo nano /etc/nginx/sites-available/yourdomain.conf</span></code></pre></div>
 <div class="blob-content gl-flex gl-w-full gl-flex-col gl-overflow-y-auto"><pre class="code highlight !gl-p-0"><code data-blob-hash="8734431499495818"><span lang="shell" class="line" id="LC1"><span class="c">upstream odoo {</span></span>
 <span lang="shell" class="line" id="LC2"><span class="nb">    server 127.0.0.1:8069;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">}</span>
+<span lang="shell" class="line" id="LC2"><span class="nb"></span>
+<span lang="shell" class="line" id="LC2"><span class="nb">server {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    server_name your_domain.com;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb"></span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    access_log /var/log/nginx/odoo_access.log;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    error_log /var/log/nginx/odoo_error.log;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    proxy_buffers 16 64k;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    proxy_buffer_size 128k;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    location / {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_pass http://odoo;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_http_version 1.1;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Upgrade $http_upgrade;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Connection "upgrade";</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Host $host;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_cache_bypass $http_upgrade;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Real-IP $remote_addr;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-NginX-Proxy true;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Forwarded-Proto https;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Forwarded-Host $host;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_redirect off;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_request_buffering off;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_connect_timeout  36000s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_read_timeout  36000s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_send_timeout  36000s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        send_timeout  36000s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        client_max_body_size 10240m;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    }</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    location ~* /web/static/ {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_cache_valid 200 60m;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_buffering on;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        expires 864000;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_pass http://odoo;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    }</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    location ~* /web/static/ {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_cache_valid 200 60m;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_buffering on;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        expires 864000;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_pass http://odoo;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    }</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    location /longpolling {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_pass http://odoo;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_connect_timeout 600s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_send_timeout 600s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_read_timeout 600s;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    }</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    </span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    location /websocket {</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_pass http://odoo;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_http_version 1.1;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Upgrade $http_upgrade;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Connection "upgrade";</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header Host $host;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Real-IP $remote_addr;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">        proxy_set_header X-Forwarded-Proto $scheme;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    }</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">}</span></code></pre></div>
 
 
+
+ 
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+<span lang="shell" class="line" id="LC2"><span class="nb">    listen 80;</span>
+
+
+
+
+ 
+</span>"shell" class="line" id="LC2"><span class="nb"></span>
+
+ 
 <span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre>
 </div>
 
