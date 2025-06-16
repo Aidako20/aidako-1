@@ -22,9 +22,11 @@
 <span lang="shell" class="line" id="LC19"><span class="nb">sudo ln</span> <span class="nt">-s</span> /opt/odoo/odoo/odoo-bin /usr/bin/odoo</span>
 <span lang="shell" class="line" id="LC20"><span class="nb">sudo </span>update-rc.d <span class="nt">-f</span> odoo start 20 2 3 4 5 <span class="nb">.</span></span>
 <span lang="shell" class="line" id="LC21"><span class="nb">sudo </span>service odoo restart</span></code></pre></div>
-
+<div>
 <span lang="shell" class="line" id="LC21">sudo apt install nginx</span></code></pre></div>
-<span lang="shell" class="line" id="LC21">sudo systemctl enable nginx</span></code></pre></div>
+<span lang="shell" class="line" id="LC21">sudo systemctl enable nginx</span></code></pre>
+
+</div>
 
 
 
