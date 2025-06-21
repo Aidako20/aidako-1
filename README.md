@@ -105,7 +105,7 @@
 <div><span lang="shell" class="line" id="LC21"></span></code></pre></div>
 
 <div><span lang="shell" class="line" id="LC21">sudo apt install certbot python3-certbot-nginx </span></code></pre></div>
-<div><span lang="shell" class="line" id="LC21">sudo certbot --nginx -d your_domain </span></code></pre></div>
+<div><span lang="shell" class="line" id="LC21">sudo certbot --nginx -d your_domain.conf </span></code></pre></div>
 <div><span lang="shell" class="line" id="LC21">sudo nano /etc/nginx/sites-available/yourdomain </span></code></pre></div>
 <div class="blob-content gl-flex gl-w-full gl-flex-col gl-overflow-y-auto"><pre class="code highlight !gl-p-0"><code data-blob-hash="8734431499495818"><span lang="shell" class="line" id="LC1"><span class="c">add_header 'Content-Security-Policy' 'upgrade-insecure-requests';</span></code></pre></div>
 
