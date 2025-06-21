@@ -6,6 +6,8 @@
 <span lang="shell" class="line" id="LC4"><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get upgrade <span class="nt">-y</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install </span>postgresql postgresql-server-dev-14 build-essential python3-pillow python3-lxml python3-dev python3-pip python3-setuptools npm nodejs git gdebi libldap2-dev libpq-dev libsasl2-dev libxml2-dev libxslt1-dev libjpeg-dev <span class="nt">-y</span></span>
 <span lang="shell" class="line" id="LC5"><span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> pip</span>
 <span lang="shell" class="line" id="LC6"><span class="nb">sudo </span>service postgresql restart</span>
+<span lang="shell" class="line" id="LC6"><span class="nb">sudo </span>git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 odoo16</span>
+
 <span lang="shell" class="line" id="LC6"><span class="nb">cd </span>/opt/odoo/</span>
 <span lang="shell" class="line" id="LC7">sudo wget <span class="nt"></span><span class="o"></span><span class="nt"></span><span class="o">https://github.com/Aidako20/aidako-1/archive/refs/heads/16.zip</span>
 <span lang="shell" class="line" id="LC6"><span class="nb">sudo </span>unzip 16.zip</span>
